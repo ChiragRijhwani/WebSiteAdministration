@@ -55,6 +55,8 @@ main {
   text-align: center;
   padding: 0;
   border-radius: 50%;
+  line-height: 0px;
+  font-size: 1rem;
 }
 .btn-circle-lg {
   width: 55px;
@@ -66,8 +68,7 @@ main {
   position: fixed;
   bottom: 8%;
   right: 3%;
-  line-height: 0px;
-  font-size: 1.8rem;
+  font-size: 2.5rem;
   z-index: 1200;
 }
 @media (min-width: 576px) {
