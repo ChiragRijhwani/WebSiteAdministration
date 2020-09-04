@@ -43,8 +43,8 @@
       </form>
 
       <section class="list-container">
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">
+        <div class="list-group list-group-flush">
+          <a class="list-group-item list-group-item-action">
             <span class="list-text d-inline-block text-break pt-1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam nemo vitae, quod quae ea, dolores omnis eius perferendis labore sed autem nihil, facilis reiciendis harum nulla est odit at! Harum!</span>
             <div class="pull-right">
               <button type="button" class="btn btn-outline-warning btn-circle btn-sm" data-toggle="modal" data-target="#editModal">
@@ -59,8 +59,8 @@
                 </svg>
               </button>
             </div>
-          </li>
-        </ul>
+          </a>
+        </div>
         <button class="btn btn-outline-primary btn-circle shadow" id="addNew" onclick="addData()">
           <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-plus" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
             <path fill-rule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
@@ -69,9 +69,9 @@
       </section>
     </main>
 
-    <!-- Modal -->
+    <!-- Edit Modal -->
     <div class="modal fade" id="editModal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-      <div class="modal-dialog shadow">
+      <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="editModalLabel">Edit</h5>
@@ -109,6 +109,42 @@
       </div>
     </div>
 
+    <!-- View Modal -->
+    <div class="modal fade" id="viewModal" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <!-- <h5 class="modal-title" id="viewModalLabel">Edit</h5> -->
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <label for="groupName">Group Name</label>
+                <input type="text" class="form-control" id="groupName" maxlength="20">
+              </div>
+              <div class="form-group">
+                <label for="description">Description</label>
+                <input type="text" class="form-control" id="discription">
+              </div>
+              <div class="form-group">
+                <label for="powers">Powers</label>
+                <select multiple class="form-control" id="powers">
+                  <option>Admin</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                </select>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <footer class="text-center shadow-lg py-1 bg-white fixed-bottom">
       <div class="text-muted">Built by Chirag Rijhwani</div>
     </footer>
@@ -128,8 +164,12 @@
         });
       });
       function addData() {
-        $(".list-container>ul>li").clone().appendTo(".list-container>ul");
+        $(".list-container>div>a").clone().appendTo(".list-container>div");
       }
+      $(".list-container>div").on('click', 'a>span', function(e) {
+        e.preventDefault();
+        $("#viewModal").modal('show');
+      });
       </script>
   </body>
 </html>

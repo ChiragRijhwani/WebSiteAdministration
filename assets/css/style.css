@@ -48,6 +48,9 @@ main {
 .list-text {
   width: 60%;
 }
+.list-container>div>a>span {
+  cursor: pointer;
+}
 .btn-circle {
   width: 45px;
   height: 45px;
